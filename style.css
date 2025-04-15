@@ -79,6 +79,15 @@ container {
     align-items: right;
 }
 
+#search-departure {
+    height: 20px;
+}
+
+#search-arrival {
+    height: 35px;
+    border-bottom: 1px solid grey;
+}
+
 #colonne-droit {
     display: flex;
     justify-content: left;
