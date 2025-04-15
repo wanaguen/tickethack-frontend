@@ -19,7 +19,7 @@ header {
     grid-column-start: 1;
     grid-column-end: 15;
     background-color: white;
-    padding: 5px 15px;
+    padding: 10px 15px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -57,7 +57,8 @@ h1 {
 }
 
 h2 {
-    margin: 15px;
+    margin: 0;
+    text-align: center;
 }
 
 container {
@@ -88,9 +89,11 @@ container {
 }
 
 #tripSearch {
-    justify-content: space-evenly;
+    display: flex;
     flex-direction: column;
-    background-color: #fefefe;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-evenly;
 }
 
 .champ {
@@ -106,7 +109,8 @@ container {
 #trips-container {
     display: flex;
     flex-direction: column;
-    background-color: #fefefe;
+    justify-content: center;
+    align-items: center;
     overflow: auto;
 }
 
@@ -120,30 +124,28 @@ container {
 #image-train {
     width: 100px;
     height: 100px;
-    margin: 15px;
+    margin-bottom: 25px;
 }
 
 .boite-blanche {
     width: 23vw;
     height: 57vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     border-radius: 10px;
+    background-color: #fefefe;
 }
 
 .row {
     width: 80%;
-    height: 6vh;
-    margin: 20px;
+    height: 8vh;
+    margin: 10px;
+    padding: 10px;
     display: flex;
     border-radius: 5px;
     justify-content: space-between;
     flex-direction: row;
     background-color: #eff2f1;
-    font-family:Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 10px;
+    font-family: sans-serif;
+    font-size: 12px;
 }
 
 p {
@@ -159,9 +161,13 @@ p {
 
 
 #titres {
-    height: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 20vh;
     text-align: center;
     color: white;
+    padding: 20px;
 }
 
 #columns-container {

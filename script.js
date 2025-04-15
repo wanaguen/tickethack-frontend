@@ -1,11 +1,17 @@
 // Déclaration de la fonction pour générer les résultats de recherche
-function createTripRow(data) {
-    // Avant de créer les nouvelles lignes, on supprime les anciennes
-    const lastRows = document.querySelectorAll('.row');
+function displayResults(data) {
+    if (data.searchTrips[0] === undefined) {
 
-    for (let j = 0; j < lastRows.length; j++) {
-        lastRows[j].remove();
-    }
+        // document.querySelector('#image-train').style.display = 'none';
+        document.querySelector('#image-train').src = "images/notfound.png";
+        document.querySelector('#phrase-train').textContent = "No trip found.";
+        document.querySelector('#image-train').style.display = 'block';
+        document.querySelector('#phrase-train').style.display = 'block';;
+        // document.querySelector('#trips-container').innerHTML += `
+        // <img id="image-train" src="images/notfound.png"/>
+        // <h2 id="phrase-train">No trip found.</h2>
+        // `
+    } else {
 
     // Puis on vient créer autant de lignes qu'il y a de résultats remontés
     for (let i = 0; i < data.searchTrips.length; i++) {
@@ -21,8 +27,21 @@ function createTripRow(data) {
         </div>
         `
     }
-    
+    } 
 }
+
+// On déclare la fonction qui va d'abord supprimer le contenu affiché avant les résultats de la recherche
+function deletePreviousContent() {
+    const image = document.querySelector('#image-train');
+    const texte = document.querySelector('#phrase-train');
+    const lastRows = document.querySelectorAll('.row');
+
+        image.style.display = 'none';
+        texte.style.display = 'none';
+        for (let j = 0; j < lastRows.length; j++) {
+            lastRows[j].remove();
+        }
+    }
 
 // On écoute l'événement "clic" du bouton de recherche
 document.querySelector('#search-button').addEventListener('click', function() {
@@ -38,10 +57,8 @@ document.querySelector('#search-button').addEventListener('click', function() {
      })
         .then(response => response.json())
         .then(data => {
-            if (!data.searchTrips) {
-                
-            }
             console.log('Trips trouvés : ' + data);
-            createTripRow(data);
+            deletePreviousContent();
+            displayResults(data);
         })
 })
