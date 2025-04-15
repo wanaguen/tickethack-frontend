@@ -1,19 +1,21 @@
-document.querySelector('#search-button').addEventListener('click', function() {
-    console.log(document.querySelector('#search-date').value);
-})
-
+// Déclaration de la fonction pour générer les résultats de recherche
 function createTripRow(data) {
+    // Avant de créer les nouvelles lignes, on supprime les anciennes
     const lastRows = document.querySelectorAll('.row');
 
     for (let j = 0; j < lastRows.length; j++) {
         lastRows[j].remove();
     }
 
+    // Puis on vient créer autant de lignes qu'il y a de résultats remontés
     for (let i = 0; i < data.searchTrips.length; i++) {
+        const hours = new Date(data.searchTrips[i].date).getHours();
+        const minutes = new Date(data.searchTrips[i].date).getMinutes();
+
         document.querySelector('#trips-container').innerHTML += `
         <div class="row">
             <p>${data.searchTrips[i].departure} > ${data.searchTrips[i].arrival} </p>
-            <p>${new Date(data.searchTrips[i].date).getHours().padStart(2, '0')}:${new Date(data.searchTrips[i].date).getMinutes().padStart(2, '0')}</p>
+            <p>${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}</p>
             <p>${data.searchTrips[i].price}€ </p>
             <button id="book-button" type="button">Book</button>
         </div>
@@ -22,6 +24,7 @@ function createTripRow(data) {
     
 }
 
+// On écoute l'événement "clic" du bouton de recherche
 document.querySelector('#search-button').addEventListener('click', function() {
     const trip = {
         departure: document.querySelector('#search-departure').value,
@@ -35,6 +38,9 @@ document.querySelector('#search-button').addEventListener('click', function() {
      })
         .then(response => response.json())
         .then(data => {
+            if (!data.searchTrips) {
+                
+            }
             console.log('Trips trouvés : ' + data);
             createTripRow(data);
         })
