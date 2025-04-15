@@ -26,6 +26,14 @@ function displayResults(data) {
             <button id="book-button" type="button">Book</button>
         </div>
         `
+        
+    }
+    const bookButtons = document.querySelectorAll('#book-button');
+    for (let j = 0; j < bookButtons.length; j++) {
+        bookButtons[j].addEventListener('click', function() {
+
+            window.location.assign('cart.html');
+        })
     }
     } 
 }

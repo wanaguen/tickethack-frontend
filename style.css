@@ -45,7 +45,7 @@ header {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    margin-right: 0px;
+    margin-right: 20px;
     width: 250px;
     height: 100%;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
@@ -59,6 +59,8 @@ h1 {
 h2 {
     margin: 0;
     text-align: center;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: 400;
 }
 
 container {
@@ -80,12 +82,23 @@ container {
 }
 
 #search-departure {
-    height: 20px;
+    border-bottom: 1px solid grey;
 }
 
 #search-arrival {
-    height: 35px;
-    border-bottom: 1px solid grey;
+    margin-bottom: 50px;
+}
+
+#search-button {
+    background-color: #459e85;
+    color: white;
+    margin-top: 50px;
+    font-weight: bold;
+}
+
+#search-button:hover {
+    background-color: #79d4bb;
+    cursor: pointer;
 }
 
 #colonne-droit {
@@ -100,19 +113,34 @@ container {
 #tripSearch {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    padding: 30px 0;
+    justify-content: top;
     align-items: center;
-    justify-content: space-evenly;
 }
 
 .champ {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin: 15px;
     width: 80%;
-    height: 30px;
+    height: 40px;
+    padding: 15px;
     background-color: #eff2f1;
+    border: 0;
+    border-radius: 5px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 15px;
+    color: grey
+}
+
+.input:hover {
+    background-color: rgb(218, 218, 218);
+}
+
+.input:focus {
+    background-color: rgb(218, 218, 218);
+    border: 2px solid;
+    border-color: blue;
 }
 
 #trips-container {
@@ -121,6 +149,11 @@ container {
     justify-content: center;
     align-items: center;
     overflow: auto;
+}
+
+#book-button:hover {
+    cursor: pointer;
+    background-color: #79d4bb;
 }
 
 #phrase-train {
@@ -172,11 +205,12 @@ p {
 #titres {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-around;
     height: 20vh;
     text-align: center;
     color: white;
     padding: 20px;
+    font-family: "Space Mono";
 }
 
 #columns-container {
