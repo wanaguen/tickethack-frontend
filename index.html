@@ -5,13 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css"/>
+    <link href="fonts/FiraSansExtraCondensed-Bold.ttf" rel="fonts">
 </head>
 <body>
     <header>
-        <h1 id="logo">Tickethack</h1>
+        <div id="logo">
+            <h1>Tickethack</h1>
+        </div>
         <div id="pages">
-            <div class="onglet"></div>
-            <div class="onglet"></div>
+            <h2 class="onglet">Cart</h2>
+            <h2 class="onglet">Bookings</h2>
         </div>
     </header>
     <container>
@@ -20,11 +23,42 @@
             <h2>Compare, book and enjoy cheap prices for train tickets: your journey starts on Tickethack.</h2>
         </div>
         <div id="columns-container">
-            <div class="colonne">
-                <div id="tripSearch"></div>
-                <div id="tripResults"></div>
+            <div id="colonne-gauche">
+                <div id="tripSearch">
+                    <input id="search-departure" type="text" placeholder="Departure" />
+                    <input id="search-arrival" type="text" placeholder="Arrival" />
+                    <input id="search-date" type="date"  />
+                    <button id="search-button" type="button">Search</button>
+                </div>
             </div>
-            <div class="colonne"></div>
+            <div id="colonne-droit">
+                <div id="trips-container">
+                    <div class="row">
+                        <p>Départ > Arrivée</p>
+                        <p>hh:mm</p>
+                        <p>prix €</p>
+                        <button id="book-button" type="button">Book</button>
+                    </div>
+                    <div class="row">
+                        <p>Départ > Arrivée</p>
+                        <p>hh:mm</p>
+                        <p>prix €</p>
+                        <button id="book-button" type="button">Book</button>
+                    </div>
+                    <div class="row">
+                        <p>Départ > Arrivée</p>
+                        <p>hh:mm</p>
+                        <p>prix €</p>
+                        <button id="book-button" type="button">Book</button>
+                    </div>
+                    <div class="row">
+                        <p>Départ > Arrivée</p>
+                        <p>hh:mm</p>
+                        <p>prix €</p>
+                        <button id="book-button" type="button">Book</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </container>
  
