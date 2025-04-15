@@ -8,13 +8,13 @@ function createTripRow(data) {
     for (let j = 0; j < lastRows.length; j++) {
         lastRows[j].remove();
     }
-    
+
     for (let i = 0; i < data.searchTrips.length; i++) {
         document.querySelector('#trips-container').innerHTML += `
         <div class="row">
             <p>${data.searchTrips[i].departure} > ${data.searchTrips[i].arrival} </p>
-            <p>${data.searchTrips[i].date}</p>
-            <p>${data.searchTrips[i].price}</p>
+            <p>${new Date(data.searchTrips[i].date).getHours().padStart(2, '0')}:${new Date(data.searchTrips[i].date).getMinutes().padStart(2, '0')}</p>
+            <p>${data.searchTrips[i].price}€ </p>
             <button id="book-button" type="button">Book</button>
         </div>
         `
