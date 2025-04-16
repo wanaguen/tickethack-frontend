@@ -34,14 +34,15 @@ function displayResults(data) {
                     id: elementID
                 })
              }).then(response => response.json())
-               .then((data) => {
+               .then(() => {
                 console.log(`Element supprimé du panier : ${elementID}`)
                 deleteButtons[j].parentNode.remove();
-                totalCount -= deleteButtons[j].price;
+                console.log(deleteButtons[j].price);
+                totalCount -= data[j].price;
                 document.querySelector('#totalCount').textContent = `${totalCount} €`;
                })
                .then(() => {
-                console.log(deleteButtons.length);
+                console.log('nombre de tickets dans le panier : ' + deleteButtons.length);
                 if (deleteButtons.length === 1) {
                     document.querySelector('#notickets-msg').style.display = 'block';
                 } else {
