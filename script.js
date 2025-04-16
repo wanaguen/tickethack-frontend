@@ -32,20 +32,20 @@ function displayResults(data) {
     for (let j = 0; j < bookButtons.length; j++) {
         const trip = {
             tripId: data.searchTrips[j]._id,
-            departure,
-            arrrival,
-            date,
-            price
+            departure : data.searchTrips[j].departure,
+            arrival: data.searchTrips[j].arrival,
+            date: data.searchTrips[j].date,
+            price: data.searchTrips[j].price,
         }
-        fetch('http://localhost:3000/carts', {
-            method: 'POST',
-            headers: {"Content-Type": "application/json"},
-            body: JSON.stringify(trip)
-         })
         
         bookButtons[j].addEventListener('click', function() {
+            fetch('http://localhost:3000/carts', {
+                method: 'POST',
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify(trip)
+             })
             console.log(`ID du voyage : ${trip.tripId}`);
-            // window.location.assign('cart.html');
+            window.location.assign('cart.html');
         })
     }
     } 

@@ -1,44 +1,62 @@
 // Déclaration de la fonction pour générer les résultats de recherche
 function displayResults(data) {
-    if (data.searchTrips[0] === undefined) {
+    if (data === 0) {
         document.querySelector('#notickets-msg').style.display = 'block';
     } else {
     
     document.querySelector('#notickets-msg').style.display = 'none';
+    let totalCount = 0;
+
     // Puis on vient créer autant de lignes qu'il y a de résultats remontés
     for (let i = 0; i < data.length; i++) {
         const hours = new Date(data[i].date).getHours();
         const minutes = new Date(data[i].date).getMinutes();
-
+        
         document.querySelector('#tripscart').innerHTML += `
         <div class="row">
             <p>${data[i].departure} > ${data[i].arrival} </p>
             <p>${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}</p>
             <p>${data[i].price}€ </p>
-            <button id="purchase-button" type="button">Purchase</button>
+            <button id="delete-button" type="button">X</button>
         </div>
         `
-        
+        totalCount += data[i].price;
     }
-    const bookButtons = document.querySelectorAll('#book-button');
-    for (let j = 0; j < bookButtons.length; j++) {
-        const trip = {
-            tripId: data.searchTrips[j]._id,
-            departure,
-            arrrival,
-            date,
-            price
-        }
-        fetch('http://localhost:3000/carts', {
-            method: 'POST',
-            headers: {"Content-Type": "application/json"},
-            body: JSON.stringify(trip)
-         })
-        
-        bookButtons[j].addEventListener('click', function() {
-            console.log(`ID du voyage : ${trip.tripId}`);
-            // window.location.assign('cart.html');
-        })
+
+    // Mettre à jour le compteur du montant total du panier
+    document.querySelector('#totalCount').textContent = `${totalCount} €`;
+    
+    
+    const deleteButtons = document.querySelectorAll('#delete-button');
+    for (let j = 0; j < deleteButtons.length; j++) {
+        const elementID = data[j]._id
+        deleteButtons[j].addEventListener('click', function() {
+            fetch('http://localhost:3000/carts', {
+                method: 'DELETE',
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify({
+                    id: elementID
+                })
+             }).then(response => response.json())
+               .then(() => {
+                console.log(`Element supprimé du panier : ${elementID}`)
+                deleteButtons[j].parentNode.remove();
+                totalCount -= deleteButtons[j].price;
+                document.querySelector('#totalCount').textContent = `${totalCount} €`;
+               })
+            
+        })   
     }
     } 
 }
+
+
+
+// On écoute l'événement "clic" du bouton de recherche
+fetch('http://localhost:3000/carts')
+    .then(response => response.json())
+    .then(data => {
+        console.log(`Tickets trouvés : ${data.allCarts}`);
+        // deletePreviousContent();
+        displayResults(data.allCarts);
+    })
