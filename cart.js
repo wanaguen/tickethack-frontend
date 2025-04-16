@@ -1,10 +1,6 @@
 // Déclaration de la fonction pour générer les résultats de recherche
 function displayResults(data) {
-    if (data === 0) {
-        document.querySelector('#notickets-msg').style.display = 'block';
-    } else {
-    
-    document.querySelector('#notickets-msg').style.display = 'none';
+
     let totalCount = 0;
 
     // Puis on vient créer autant de lignes qu'il y a de résultats remontés
@@ -38,18 +34,24 @@ function displayResults(data) {
                     id: elementID
                 })
              }).then(response => response.json())
-               .then(() => {
+               .then((data) => {
                 console.log(`Element supprimé du panier : ${elementID}`)
                 deleteButtons[j].parentNode.remove();
                 totalCount -= deleteButtons[j].price;
                 document.querySelector('#totalCount').textContent = `${totalCount} €`;
                })
+               .then(() => {
+                console.log(deleteButtons.length);
+                if (deleteButtons.length === 1) {
+                    document.querySelector('#notickets-msg').style.display = 'block';
+                } else {
+                    document.querySelector('#notickets-msg').style.display = 'none';
+                }
+               })
             
         })   
     }
-    } 
-}
-
+    }
 
 
 // On écoute l'événement "clic" du bouton de recherche
@@ -59,4 +61,9 @@ fetch('http://localhost:3000/carts')
         console.log(`Tickets trouvés : ${data.allCarts}`);
         // deletePreviousContent();
         displayResults(data.allCarts);
+        if (data.allCarts.length === 0) {
+            document.querySelector('#notickets-msg').style.display = 'block';
+        } else {
+            document.querySelector('#notickets-msg').style.display = 'none';
+        }
     })
