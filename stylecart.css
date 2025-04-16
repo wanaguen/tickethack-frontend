@@ -1,10 +1,11 @@
 body {
+    margin: auto;
     display: grid;
     grid-template-rows: repeat(14, 1fr);
     grid-template-columns: repeat(14, 1fr);
-    border: 1px solid black;
     height: 100vh;
 }
+
 
 header {
     grid-row-start: 1;
@@ -12,23 +13,22 @@ header {
     grid-column-start: 1;
     grid-column-end: 15;
     background-color: white;
-    padding: 0 15px;
+    padding: 10px 15px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    border: 1px solid black;
-
 }
 
 #logo {
     display: flex;
     margin-left: 0px;
     height: 100%;
-    border: 1px solid black;
-    background-color: red;
     text-align: center;
     justify-content: center;
+    font-family: "Fira Sans Extra Condensed";
+    font-style: normal;
+    color: #459e85;
 }
 .onglet {
     font-size: 15px;
@@ -39,17 +39,16 @@ header {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-
-    margin-right: 0px;
+    margin-right: 20px;
     width: 250px;
     height: 100%;
-    border: 1px solid black;
-    background-color: blue;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 container {
     
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     grid-row-start: 2;
@@ -58,36 +57,76 @@ container {
     grid-column-end: 15;
     background-size: cover;
     background-color: rgb(195, 192, 192);
-    border: 1px solid black;
 
 }
 
 #tripscart {
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    align-items: center;
-    padding: 0 30px;
     width: 50vw;
     height: 30vh;
-    border: 1px solid black;
-    align-items: right;
+    align-items: center;
     background-color: white;
+    border-radius: 15px 15px 0 0;
 
 }
 
+h1 {
+    font-size: 27px;
+    margin: auto;
+}
 
+h2 {
+    font-size: 25px;
+    margin: 0;
+    text-align: center;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-style: bold;
+}
 
+#notickets-msg {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Trebuchet MS';
+    font-size: 17px;
+    text-align: center;
+}
+
+#cart-footer {
+    background-color: #00153e;
+    height: 10vh;
+    width: 50vw;
+    border-radius: 0 0 15px 15px;
+}
 
 
 .row {
-    width: 90%;
+    width: 85%;
+    height: 50px;
+    margin: 10px;
+    padding: 10px 4px;
     display: flex;
+    border-radius: 5px;
+    justify-content: space-around;
     flex-direction: row;
-    border: 1px solid black;
+    background-color: #eff2f1;
+    font-family: 'Trebuchet MS';
+    font-size: 13px;
 }
 
 p {
     margin: 5px;
+}
+
+#purchase-button {
+    border-radius: 5px;
+    background-color: #459e85;
+    color: white;
+    border: 0px;
+    display: block;
 }
 
 
