@@ -1,3 +1,11 @@
+function travelTime(infos) {
+    let result = '';
+    const time = new Date(infos.arrival) - new Date(infos.departure);
+
+        result = `Temps de trajet estimé : ${time / 60000} minutes`;
+
+}
+
 // Déclaration de la fonction pour générer les résultats de recherche
 function displayResults(data) {
 
@@ -13,6 +21,7 @@ function displayResults(data) {
             <p>${data[i].departure} > ${data[i].arrival} </p>
             <p>${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}</p>
             <p>${data[i].price}€ </p>
+            <p>Départ dans : ${travelTime(data[i])}€ </p>
         </div>
         `
     }
