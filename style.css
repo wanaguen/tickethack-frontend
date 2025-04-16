@@ -36,8 +36,15 @@ header {
     font-style: normal;
     color: #459e85;
 }
+
 .onglet {
+    margin: 20px;
     font-size: 15px;
+}
+
+a, a:visited {
+    color: black;
+    text-decoration: none;
 }
 
 #pages {
