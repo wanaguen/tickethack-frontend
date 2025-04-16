@@ -21,8 +21,6 @@ function displayResults(data) {
 
     // Mettre à jour le compteur du montant total du panier
     document.querySelector('#totalCount').textContent = `${totalCount} €`;
-    
-    
     const deleteButtons = document.querySelectorAll('#delete-button');
     for (let j = 0; j < deleteButtons.length; j++) {
         const elementID = data[j]._id
@@ -52,10 +50,36 @@ function displayResults(data) {
             
         })   
     }
-    }
+}
+
+document.querySelector('#purchase-button').addEventListener('click', function() {
+    fetch('http://localhost:3000/carts')
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            console.log(data.allCarts.length);
+            for (let k = 0; k < data.allCarts.length; k++) {
+                console.log(data.allCarts[k].departure);
+                const trip = { 
+                    departure: data.allCarts[k].departure,
+                    arrival: data.allCarts[k].arrival,
+                    date: data.allCarts[k].date,
+                    price: data.allCarts[k].price
+                };
+                fetch('http://localhost:3000/bookings', {
+                    method: 'POST',
+                    headers: {"Content-Type": "application/json"},
+                    body: JSON.stringify(trip)
+                 })
+            }
+        }).then(() => {
+                window.location.assign('booking.html');
+            })
+
+})
 
 
-// On écoute l'événement "clic" du bouton de recherche
+// Au chargement de la page, on fetch tous les trajets enregistés dans la collection Cart (grâce à la fonction display Results)
 fetch('http://localhost:3000/carts')
     .then(response => response.json())
     .then(data => {

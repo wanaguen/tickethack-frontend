@@ -167,6 +167,7 @@ p {
     border: 0px;
     text-align: center;
     display: block;
+    cursor: pointer;
 }
 
 #purchase-button {
@@ -177,6 +178,7 @@ p {
     color: white;
     border: 0px;
     display: block;
+    cursor: pointer;
 }
 
 

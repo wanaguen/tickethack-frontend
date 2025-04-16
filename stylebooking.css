@@ -69,11 +69,12 @@ container {
     justify-content: center;
     padding: 20px 0;
     width: 50vw;
-    height: 30vh;
+    height: 60vh;
     align-items: center;
     background-color: white;
     border-radius: 15px 15px 15px 15px;
     max-height: 60vh;
+    overflow: auto;
 }
 
 h1 {
