@@ -30,9 +30,22 @@ function displayResults(data) {
     }
     const bookButtons = document.querySelectorAll('#book-button');
     for (let j = 0; j < bookButtons.length; j++) {
+        const trip = {
+            tripId: data.searchTrips[j]._id,
+            departure,
+            arrrival,
+            date,
+            price
+        }
+        fetch('http://localhost:3000/carts', {
+            method: 'POST',
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify(trip)
+         })
+        
         bookButtons[j].addEventListener('click', function() {
-
-            window.location.assign('cart.html');
+            console.log(`ID du voyage : ${trip.tripId}`);
+            // window.location.assign('cart.html');
         })
     }
     } 
